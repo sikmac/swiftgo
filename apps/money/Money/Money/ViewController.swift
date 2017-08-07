@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Money
-//
-//  Created by joe feng on 2016/6/20.
-//  Copyright © 2016年 hsin. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -20,9 +12,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var currentMonthLabel :UILabel!
     var prevBtn :UIButton!
     var nextBtn :UIButton!
-    var amountLabel :UILabel!
-    var myTableView :UITableView!
-    var selectedBackgroundView :UIView!
+    var amountLabel :UILabel!    // 總金額
+    var myTableView :UITableView!    // 花費記錄列表
+    var selectedBackgroundView :UIView!    // 點選 cell 後的 UIView
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // 導覽列右邊設定按鈕
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings")!, style: .plain, target: self, action: #selector(ViewController.settingsBtnAction))
 
-        // 目前年月
+        // 目前年月(搞定)
         currentMonthLabel = UILabel(frame: CGRect(x: 0, y: 0, width: fullsize.width * 0.7, height: 50))
         currentMonthLabel.center = CGPoint(x: fullsize.width * 0.5, y: 35)
         currentMonthLabel.textColor = UIColor.white

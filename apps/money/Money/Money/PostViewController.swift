@@ -1,11 +1,3 @@
-//
-//  PostViewController.swift
-//  Money
-//
-//  Created by joe feng on 2016/6/21.
-//  Copyright © 2016年 hsin. All rights reserved.
-//
-
 import UIKit
 
 class PostViewController: UIViewController, UITextFieldDelegate {
@@ -73,7 +65,7 @@ class PostViewController: UIViewController, UITextFieldDelegate {
             myTextField.delegate = self
             if let str = record.amount {
                 myTextField.text = String(format: "%g",str)
-  }
+            }
             self.view.addSubview(myTextField)
             if recordId < 1 {
                 myTextField.becomeFirstResponder()
@@ -228,6 +220,7 @@ class PostViewController: UIViewController, UITextFieldDelegate {
     func doneTouched(_ sender:UIBarButtonItem) {
         let textField = self.view.viewWithTag(503) as! UITextField
         let date = myFormatter.string(from: myDatePicker.date)
+//        print("\(date)")
         textField.text = date
         record.createTime = date
 

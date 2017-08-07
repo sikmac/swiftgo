@@ -1,11 +1,3 @@
-//
-//  SQLiteConnect.swift
-//  Money
-//
-//  Created by joe feng on 2016/6/21.
-//  Copyright © 2016年 hsin. All rights reserved.
-//
-
 import Foundation
 
 class SQLiteConnect {
@@ -16,6 +8,7 @@ class SQLiteConnect {
     init?(file :String) {
         // 資料庫檔案的路徑
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
         sqlitePath = urls[urls.count-1].absoluteString + file
         
         db = self.openDatabase(sqlitePath)
@@ -57,8 +50,11 @@ class SQLiteConnect {
             + "values (\(rowInfo.values.joined(separator: ",")))"
         
         if sqlite3_prepare_v2(self.db, sql.cString(using: String.Encoding.utf8), -1, &statement, nil) == SQLITE_OK {
+            print("1:\(sql)")
             if sqlite3_step(statement) == SQLITE_DONE {
+                print("2:\(sql)")
                 return true
+                
             }
             sqlite3_finalize(statement)
         }
